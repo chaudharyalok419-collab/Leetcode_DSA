@@ -34,8 +34,8 @@ public:
                              }
 
                      }
-                }   edges/=2;
-                if (edges==(nodes*(nodes-1)/2))
+                }   
+                if (edges==(nodes*(nodes-1)))
                    ans++;
               }
         }
