@@ -20,25 +20,24 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    int ans = INT_MIN;
-
-    int sum(TreeNode *root)
-    {
-        if (root == NULL)
+  int ans= INT_MIN;
+   int sum(TreeNode * root)
+     {
+        if (root ==NULL)
             return 0;
+         int m= max(0,sum(root->right));
+          int l=max(0,sum(root->left));
+            ans= max(ans,m+l+root->val);
+           return max(l,m)+root->val;
 
-        int left = max(0, sum(root->left));
-        int right = max(0, sum(root->right));
-
-        ans = max(ans, root->val + left + right);
-
-        return root->val + max(left, right);
-    }
-
+     }
     int maxPathSum(TreeNode* root) {
         sum(root);
+       
         return ans;
+        
     }
 };
