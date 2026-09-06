@@ -1,8 +1,8 @@
 class Solution {
 public:
-    vector<vector<long long>> dp;
+    vector<vector<int>> dp;
 
-    long long helper(string &s, string &t, int i, int j)
+    int  helper(string &s, string &t, int i, int j)
     {
        
         if (j == t.size())
@@ -14,9 +14,9 @@ public:
         if (dp[i][j] != -1)
             return dp[i][j];
 
-        long long skip = helper(s, t, i + 1, j);
+        int skip = helper(s, t, i + 1, j);
 
-        long long take = 0;
+        int  take = 0;
         if (s[i] == t[j])
             take = helper(s, t, i + 1, j + 1);
 
@@ -24,7 +24,7 @@ public:
     }
 
     int numDistinct(string s, string t) {
-        dp.assign(s.size(), vector<long long>(t.size(), -1));
+        dp.assign(s.size(), vector<int>(t.size(), -1));
         return helper(s, t, 0, 0);
     }
 };
